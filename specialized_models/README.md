@@ -33,4 +33,5 @@ Again, adjust `PARAMS` to tailor the training setup to your needs.
 
 
 ## DPO training
-If you really want a high-quality model, DPO training is highly recommended. 
+If you really want a high-quality model, DPO training is highly recommended. We provide a DPO training code `dpo.py`. To conduct DPO training, you will also need a special dataset with two columns, `chosen` and `rejected`.
+
