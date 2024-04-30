@@ -107,3 +107,4 @@ Here are the comparative MMLU scores for various models tested under a 5-shot le
 
 
 ## Train the specialized models
+Refer to the folder of `specialized_models` for the code to train the specialized models. We intend to support [Hugging Face TRL](https://huggingface.co/docs/trl/index). We choose this framework since we believe it is the most convenient for the specialized model training. 
