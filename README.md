@@ -37,7 +37,7 @@ The project will mainly focus on the following aspects:
 The file structure of this GitHub repository is organized as follows:
 - `main.py`: This is the primary script for running the Octopus v4 model.
 - `build_graph`: Contains methods for constructing and managing the graph of language models. This includes operations such as creating, updating, and deleting nodes and edges.
-- `specialized_models`: Here, you'll find the **training code** along with a tutorial on how to prepare your data and train the specialized models. We provide support for two different frameworks: Hugging Face Transformers and PyTorch Lightning, to facilitate your training process. Feel free to raise any issues or questions you encounter during training.
+- `specialized_models`: Here, you'll find the **training code** along with a tutorial on how to prepare your data and train the specialized models. We provide code based on Hugging Face Transformers TRL library, to facilitate your training process. Feel free to raise any issues or questions you encounter during training.
 - `specialized_models_inference`: Here, you can find the **inference code** for the specialized models. This code is used to work with octopus-v4 model through the graph of language models, the entrance is the `specialized_infer.py` file.
 
 
