@@ -34,7 +34,7 @@ Again, adjust `PARAMS` to tailor the training setup to your needs.
 
 ## DPO Training
 
-For those aiming for a high-quality model, utilizing DPO training is essential. We provide the `dpo.py` script for this purpose. Ensure you have a specialized dataset featuring three columns: `prompt`, `chosen` and `rejected`, required for the DPO training.
+For those aiming for a high-quality model, utilizing DPO training is essential. We provide the `dpo.py` script for this purpose. Ensure you have a specialized dataset featuring three columns: `prompt`, `chosen` and `rejected`, required for the DPO training. 
 
 It's important to use the finetuned model from the SFT stage as the initial model for DPO training. For additional insights into PPO or reinforcement learning as applied to language models, refer to this [blog](https://alexchen4ai.github.io/blog/notes/Large%20Language%20Model/rl_llm.html).
 
