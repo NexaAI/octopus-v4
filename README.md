@@ -118,5 +118,5 @@ For instructions on training specialized models, please refer to the `specialize
 ### Recommended Training Procedures
 To develop your specialized model effectively, we suggest the following steps:
 1. **Data Collection and Preparation**: Collect a dataset specific to your domain. Process this dataset to ensure it is clean and free from inappropriate content.
-2. **Model Training**: Train your model using the Sparse Fine-Tuning (SFT) method.
+2. **Model Training**: Train your model using the Supervised Fine-Tuning (SFT) method.
 3. **DPO Training**: Prepare a dataset for Direct Preference Optimization (DPO), and use the DPO to train your model.
