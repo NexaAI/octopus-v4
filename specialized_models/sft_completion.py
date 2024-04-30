@@ -16,6 +16,13 @@ from transformers import (
 
 logger = logging.getLogger(__name__)
 
+# set your key parameters to support the training
+# for base model, make sure a compatible tokenizer is placed inside the directory as well.
+PARAMS = {
+    "base_model": "google/gemma-2b",  # You can switch to another model
+    "dataset_name": "HuggingFaceH4/ultrachat_200k",
+}
+
 
 # Set the training configuration
 # Refer to HF alignment-handbook/scripts/run_sft.py for more usage about trl
@@ -54,8 +61,10 @@ peft_config = {
     "target_modules": "all-linear",
 }
 
+
 train_conf = TrainingArguments(**training_config)
 peft_conf = LoraConfig(**peft_config)
+
 
 # set the logging
 logging.basicConfig(
@@ -70,6 +79,7 @@ transformers.utils.logging.set_verbosity(log_level)
 transformers.utils.logging.enable_default_handler()
 transformers.utils.logging.enable_explicit_format()
 
+
 # Log on each process a small summary
 logger.warning(
     f"Process rank: {train_conf.local_rank}, device: {train_conf.device}, n_gpu: {train_conf.n_gpu}"
@@ -79,7 +89,6 @@ logger.info(f"Training/evaluation parameters {train_conf}")
 logger.info(f"PEFT parameters {peft_conf}")
 
 
-checkpoint_path = "microsoft/Phi-3-mini-4k-instruct"
 model_kwargs = dict(
     use_cache=False,
     trust_remote_code=True,
@@ -87,15 +96,18 @@ model_kwargs = dict(
     torch_dtype=torch.bfloat16,
     device_map=None,
 )
-model = AutoModelForCausalLM.from_pretrained(checkpoint_path, **model_kwargs)
-tokenizer = AutoTokenizer.from_pretrained(checkpoint_path)
+
+
+model = AutoModelForCausalLM.from_pretrained(PARAMS["base_model"], **model_kwargs)
+tokenizer = AutoTokenizer.from_pretrained(PARAMS["base_model"])
 tokenizer.model_max_length = 2048
-tokenizer.pad_token = tokenizer.unk_token
-tokenizer.pad_token_id = tokenizer.convert_tokens_to_ids(tokenizer.pad_token)
+tokenizer.pad_token = tokenizer.eos_token
 tokenizer.padding_side = "right"
 
 
-# Data processing
+# TRL is a highly wrapped library, 
+# we should use text field to store the training data
+# and other fields would be removed.
 def apply_chat_template(
     example,
     tokenizer,
@@ -114,6 +126,7 @@ raw_dataset = load_dataset("HuggingFaceH4/ultrachat_200k")
 train_dataset = raw_dataset["train_sft"]
 test_dataset = raw_dataset["test_sft"]
 column_names = list(train_dataset.features)
+
 
 processed_train_dataset = train_dataset.map(
     apply_chat_template,
@@ -144,20 +157,12 @@ trainer = SFTTrainer(
     tokenizer=tokenizer,
     packing=True,
 )
+
 train_result = trainer.train()
 metrics = train_result.metrics
 trainer.log_metrics("train", metrics)
 trainer.save_metrics("train", metrics)
 trainer.save_state()
-
-
-# evaluation
-tokenizer.padding_side = "left"
-metrics = trainer.evaluate()
-metrics["eval_samples"] = len(processed_test_dataset)
-trainer.log_metrics("eval", metrics)
-trainer.save_metrics("eval", metrics)
-
 
 # Save the trained model
 trainer.save_model(train_conf.output_dir)
