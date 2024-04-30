@@ -38,7 +38,7 @@ The file structure of this GitHub repository is organized as follows:
 - `main.py`: This is the primary script for running the Octopus v4 model.
 - `build_graph`: Contains methods for constructing and managing the graph of language models. This includes operations such as creating, updating, and deleting nodes and edges.
 - `specialized_models`: Here, you'll find the **training code** along with a tutorial on how to prepare your data and train the specialized models. We provide support for two different frameworks: Hugging Face Transformers and PyTorch Lightning, to facilitate your training process. Feel free to raise any issues or questions you encounter during training.
-
+- `specialized_models_inference`: Here, you can find the **inference code** for the specialized models. This code is used to work with octopus-v4 model through the graph of language models, the entrance is the `specialized_infer.py` file.
 
 
 ## Environment Setup
@@ -51,8 +51,11 @@ pip3 install torch torchvision torchaudio
 pip3 install transformers datasets accelerate peft
 ```
 
-Make sure to install PyTorch first, followed by the other packages. Alternatively, you can create a dev environment using our Docker image. For more information on setting up a dev environment, refer to this [YouTube video](https://www.youtube.com/watch?v=0H2miBK_gAk).
-
+Make sure to install PyTorch first, followed by the other packages. Alternatively, you can create a dev environment using our Docker image. For more information on setting up a dev environment, refer to this [YouTube video](https://www.youtube.com/watch?v=0H2miBK_gAk). And you can use our Dockerfile to build the image.
+```bash
+docker build -t octopus4 .
+docker run -p 8700:8700 octopus4
+```
 
 ## Using the Octopus v4 Model
 Our initial v4 model is customized for the MMLU benchmark. However, we plan to support real-world use cases in the future. The Octopus v4 model helps you find the most appropriate model to finish your task and reformats your query so that the worker model can process it effectively. In a graph setup, it knows the best neighbor to choose and how to message from one node to another.
