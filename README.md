@@ -50,7 +50,7 @@ Make sure to install PyTorch first, followed by the other packages. Alternativel
 ## Using the Octopus v4 Model
 Our initial v4 model is customized for the MMLU benchmark. However, we plan to support real-world use cases in the future. The Octopus v4 model helps you find the most appropriate model to finish your task and reformats your query so that the worker model can process it effectively. In a graph setup, it knows the best neighbor to choose and how to message from one node to another.
 
-Here's an example of how to use the Octopus v4 model:
+Here's an example of the result for Octopus v4 model:
 ```text
 Query: Tell me the result of derivative of x^3 when x is 2?
 
