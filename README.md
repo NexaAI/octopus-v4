@@ -106,5 +106,11 @@ Here are the comparative MMLU scores for various models tested under a 5-shot le
 
 
 
-## Train the specialized models
-Refer to the folder of `specialized_models` for the code to train the specialized models. We intend to support [Hugging Face TRL](https://huggingface.co/docs/trl/index). We choose this framework since we believe it is the most convenient for the specialized model training. 
+## Train the Specialized Models
+For instructions on training specialized models, please refer to the `specialized_models` directory. We currently support training using [Hugging Face Transformers](https://huggingface.co/docs/trl/index), chosen for its convenience and robustness in training specialized models. Future updates will expand support to include LoRA training, training larger models (such as 13B and 70B), distributed training, and more. Stay tuned for these enhancements.
+
+### Recommended Training Procedures
+To develop your specialized model effectively, we suggest the following steps:
+1. **Data Collection and Preparation**: Collect a dataset specific to your domain. Process this dataset to ensure it is clean and free from inappropriate content.
+2. **Model Training**: Train your model using the Sparse Fine-Tuning (SFT) method.
+3. **DPO Training**: Prepare a dataset for Differential Privacy Optimization (DPO) and integrate DPO into your training regimen.
