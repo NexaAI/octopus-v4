@@ -14,12 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<h1 align="center">Graph of Language Models</h1>
+<h1 align="center">[Graph of Language Models](https://graph.nexa4ai.com/)</h1>
 
 **Let's build this graph together! We need your help. We have tried our best to find the best specialized models, but we can definitely do more with your participation!**
 
 <p align="center">
- <img src="https://storage.googleapis.com/octopus_graph/Octopus4.webp" alt="Octopus Logo" width="200">
+ <img src="https://storage.googleapis.com/octopus_graph/Octopus4.png" alt="Octopus Logo" width="200">
 </p>
 
 This project aims to build the world's largest graph of language models. To our knowledge, it is the first attempt to construct such a graph. In this graph, we will integrate many different specialized models and train the respective Octopus models for the edges between the nodes to help distribute and deliver information effectively.
@@ -63,7 +63,7 @@ In this use case, `<nexa_4>` is the special token representing the math GPT. The
 The respective models used in our experiments are as follows:
 
 ###  Model Selection
-We leverage the latest Language Large Models for a variety of domains. Below is a summary of the chosen models for each category. In cases where no specialized model exists for a subject, we utilize generic models like Llama3-8b.
+We leverage the latest Language Large Models for a variety of domains. Below is a summary of the chosen models for each category. In cases where no specialized model exists for a subject, we utilize generic models like Llama3-8b. You may consider to add more content to our table below. Nexa AI will create another leaderboard for the specialized model. 
 
 
 | **Model**                               | **Category**       | **Subjects**                                                                                                                                                      |
@@ -97,3 +97,6 @@ Here are the comparative MMLU scores for various models tested under a 5-shot le
 | Gemma-2b                          | 42.3%          |
 | Gemma-7b                          | 64.3%          |
 
+
+
+## Train the specialized models
