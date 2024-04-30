@@ -1,0 +1,108 @@
+{
+    "os": "Linux-5.10.0-28-cloud-amd64-x86_64-with-glibc2.31",
+    "python": "3.10.14",
+    "heartbeatAt": "2024-04-30T08:33:32.426423",
+    "startedAt": "2024-04-30T08:33:32.167270",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/home/weichen199707/octopus-v4/specialized_models/sft.py",
+    "codePathLocal": "sft.py",
+    "codePath": "specialized_models/sft.py",
+    "git": {
+        "remote": "https://github.com/NexaAI/octopus-v4.git",
+        "commit": "9234e65e445b3d940e8bd3e95cbde4f89650501d"
+    },
+    "email": "weichen6@stanford.edu",
+    "root": "/home/weichen199707/octopus-v4",
+    "host": "alex-a100-dev-vm",
+    "username": "weichen199707",
+    "executable": "/opt/conda/envs/octopus4/bin/python",
+    "cpu_count": 6,
+    "cpu_count_logical": 12,
+    "cpu_freq": {
+        "current": 2200.2279999999996,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 2200.228,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.228,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.228,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.228,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.228,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.228,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.228,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.228,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.228,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.228,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.228,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 2200.228,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 984.0530128479004,
+            "used": 478.51707458496094
+        }
+    },
+    "gpu": "NVIDIA A100-SXM4-80GB",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA A100-SXM4-80GB",
+            "memory_total": 85899345920
+        }
+    ],
+    "memory": {
+        "total": 167.06073379516602
+    }
+}
