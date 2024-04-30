@@ -34,6 +34,13 @@ The project will mainly focus on the following aspects:
 - Constructing the graph consisting of multiple specialized models as nodes.
 - Training the Octopus models to connect different nodes efficiently.
 
+The file structure of this GitHub repository is organized as follows:
+- `main.py`: This is the primary script for running the Octopus v4 model.
+- `build_graph`: Contains methods for constructing and managing the graph of language models. This includes operations such as creating, updating, and deleting nodes and edges.
+- `specialized_models`: Here, you'll find the training code along with a tutorial on how to prepare your data and train the specialized models. We provide support for two different frameworks: Hugging Face Transformers and PyTorch Lightning, to facilitate your training process. Feel free to raise any issues or questions you encounter during training.
+
+
+
 ## Environment Setup
 
 We recommend using a Linux environment and assume that you have an NVIDIA GPU when contributing to the project. To set up the project, follow these steps:
