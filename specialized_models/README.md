@@ -37,3 +37,7 @@ If you really want a high-quality model, DPO training is highly recommended. We 
 
 One note is that when you conduct the DPO training, use the finetuned model from the SFT part as the base model. For more detail about PPO or reinforcement learning for language models, refer to this [blog](https://alexchen4ai.github.io/blog/notes/Large%20Language%20Model/rl_llm.html).
 
+When you run the code, use
+```bash
+accelerate launch --num_processes=$NUM_GPUS dpo.py
+```
