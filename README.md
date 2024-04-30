@@ -16,7 +16,7 @@ limitations under the License.
 
 <h1 align="center">Graph of Language Models</h1>
 
-**Let's build this graph together! We have tried our best to find the best specialized models, but we can definitely do more with your participation!**
+**Let's build this graph together! We have tried our best to find the specialized models, but we can definitely do more with your participation!**
 
 <p align="center">
  <img src="https://storage.googleapis.com/octopus_graph/Octopus4.png" alt="Octopus Logo" width="200">
