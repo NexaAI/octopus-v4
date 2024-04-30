@@ -128,6 +128,8 @@ def process_dataset(
 # --------------------------------------------------------------------- #
 raw_dataset = load_dataset(PARAMS["dataset_name"])
 
+# We select a small number just to help you test through the code
+# In real use case, you should include all data
 train_dataset = raw_dataset["train_sft"].select(range(10000))
 test_dataset = raw_dataset["test_sft"].select(range(128))
 column_names = list(train_dataset.features)
