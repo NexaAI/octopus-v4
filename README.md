@@ -54,7 +54,11 @@ pip3 install transformers datasets accelerate peft
 Make sure to install PyTorch first, followed by the other packages. Alternatively, you can create a dev environment using our Docker image. For more information on setting up a dev environment, refer to this [YouTube video](https://www.youtube.com/watch?v=0H2miBK_gAk). And you can use our Dockerfile to build the image.
 ```bash
 docker build -t octopus4 .
-docker run -p 8700:8700 octopus4
+docker run --gpus all -p 8700:8700 octopus4
+```
+Otherwise, you can directly pull our docker image
+```
+docker pull nexaai/octopus4
 ```
 
 ## Using the Octopus v4 Model
