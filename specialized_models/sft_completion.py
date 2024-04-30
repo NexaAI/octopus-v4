@@ -12,17 +12,20 @@ from transformers import (
     TrainingArguments,
     BitsAndBytesConfig,
 )
-
+import os
 
 logger = logging.getLogger(__name__)
 
 # set your key parameters to support the training
-# for base model, make sure a compatible tokenizer is placed inside the directory as well.
+# for base model, make sure a compatible tokenizer is placed inside the directory 
+# as well. Just use tokenizer.push_to_hub("same path as model")
 PARAMS = {
     "base_model": "google/gemma-2b",  # You can switch to another model
-    "dataset_name": "HuggingFaceH4/ultrachat_200k",
+    "dataset_name": "microsoft/orca-math-word-problems-200k",
+    "WANDB_DISABLED": "true", # set as false if you want to use wandb
 }
 
+os.environ["WANDB_DISABLED"] = PARAMS["WANDB_DISABLED"]
 
 # Set the training configuration
 # Refer to HF alignment-handbook/scripts/run_sft.py for more usage about trl
@@ -50,7 +53,7 @@ training_config = {
     "warmup_ratio": 0.2,
 }
 
-# Consider to use lora to save the memory
+# Consider to change lora setup to save your memory
 peft_config = {
     "bias": "none",
     "lora_alpha": 32,
@@ -61,10 +64,8 @@ peft_config = {
     "target_modules": "all-linear",
 }
 
-
 train_conf = TrainingArguments(**training_config)
 peft_conf = LoraConfig(**peft_config)
-
 
 # set the logging
 logging.basicConfig(
@@ -79,7 +80,6 @@ transformers.utils.logging.set_verbosity(log_level)
 transformers.utils.logging.enable_default_handler()
 transformers.utils.logging.enable_explicit_format()
 
-
 # Log on each process a small summary
 logger.warning(
     f"Process rank: {train_conf.local_rank}, device: {train_conf.device}, n_gpu: {train_conf.n_gpu}"
@@ -87,7 +87,6 @@ logger.warning(
 )
 logger.info(f"Training/evaluation parameters {train_conf}")
 logger.info(f"PEFT parameters {peft_conf}")
-
 
 model_kwargs = dict(
     use_cache=False,
@@ -97,7 +96,6 @@ model_kwargs = dict(
     device_map=None,
 )
 
-
 model = AutoModelForCausalLM.from_pretrained(PARAMS["base_model"], **model_kwargs)
 tokenizer = AutoTokenizer.from_pretrained(PARAMS["base_model"])
 tokenizer.model_max_length = 2048
@@ -105,47 +103,41 @@ tokenizer.pad_token = tokenizer.eos_token
 tokenizer.padding_side = "right"
 
 
-# TRL is a highly wrapped library, 
-# we should use text field to store the training data
-# and other fields would be removed.
-def process_dataset(
-    example,
-):
-    # messages = example["messages"]
-    # # Add an empty system message if there is none
-    # if messages[0]["role"] != "system":
-    #     messages.insert(0, {"role": "system", "content": ""})
-    # example["text"] = tokenizer.apply_chat_template(
-    #     messages, tokenize=False, add_generation_prompt=False
-    # )
+# TRL is a highly wrapped library,
+# we should use text field to store the final training data
+# and other fields would be removed. You can use process dataset to assemble the data
+def process_dataset(example):
     question = example["question"]
     answer = example["answer"]
     example["text"] = f"Question:{question},  Answer:{answer}"
     return example
 
 
-raw_dataset = load_dataset("microsoft/orca-math-word-problems-200k")
-train_dataset = raw_dataset["train_sft"]
-test_dataset = raw_dataset["test_sft"]
-column_names = list(train_dataset.features)
+# --------------------------------------------------------------------- #
+#  To help you test the code, we only select 10000 samples. In real     #
+#  use case, you should include all data. And the train/val data should #
+#  be splitted.                                                         #
+# --------------------------------------------------------------------- #
+raw_dataset = load_dataset(PARAMS["dataset_name"], split="train").select(range(10000))
+raw_dataset = raw_dataset.train_test_split(test_size=128, seed=42)
 
+train_dataset = raw_dataset["train"]
+test_dataset = raw_dataset["test"]
+column_names = list(train_dataset.features)
 
 processed_train_dataset = train_dataset.map(
     process_dataset,
-    fn_kwargs={"tokenizer": tokenizer},
-    num_proc=10,
+    num_proc=4,
     remove_columns=column_names,
-    desc="Applying chat template to train_sft",
+    desc="Preprocessing the dataset",
 )
 
 processed_test_dataset = test_dataset.map(
     process_dataset,
-    fn_kwargs={"tokenizer": tokenizer},
-    num_proc=10,
+    num_proc=4,
     remove_columns=column_names,
-    desc="Applying chat template to test_sft",
+    desc="Preprocessing the dataset",
 )
-
 
 # training
 trainer = SFTTrainer(
@@ -155,7 +147,7 @@ trainer = SFTTrainer(
     train_dataset=processed_train_dataset,
     eval_dataset=processed_test_dataset,
     max_seq_length=2048,
-    dataset_text_field="text",
+    dataset_text_field="text", # select text as the data field
     tokenizer=tokenizer,
     packing=True,
 )
