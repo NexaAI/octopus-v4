@@ -31,3 +31,6 @@ accelerate launch --num_processes=$NUM_GPUS sft_chat.py
 ```
 Again, adjust `PARAMS` to tailor the training setup to your needs.
 
+
+## DPO training
+If you really want a high-quality model, DPO training is highly recommended. 
