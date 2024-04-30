@@ -30,7 +30,7 @@ question = "Tell me the result of derivative of x^3 when x is 2?"
 
 inputs = f"<|system|>You are a router. Below is the query from the users, please call the correct function and generate the parameters to call the function.<|end|><|user|>{question}<|end|><|assistant|>"
 
-print('\n============= Below is the response ==============\n')
+print('\n============= Below is Octopus-V4 response ==============\n')
 
 # You should consider to use early stopping with <nexa_end> token to accelerate
 input_ids = tokenizer(inputs, return_tensors="pt")['input_ids'].to(model.device)
@@ -50,4 +50,17 @@ result = tokenizer.decode(generated_token_ids)
 end = time.time()
 print(f"{result}")
 print(f'Elapsed time: {end - start:.2f}s')
+
+functional_token, format_argument = extract_content(result)
+functional_token = functional_token.strip()
+print(f"Functional Token: {functional_token}")
+print(f"Format Argument: {format_argument}")
+
+print('\n============= Below is specialized LLM response ==============\n')
+
+if functional_token in functional_token_mapping:
+    specialized_model = functional_token_mapping[functional_token]
+    pipe, tokenizer = model_import_mapping[specialized_model]()
+    response = model_inference_mapping[specialized_model](format_argument, pipe, tokenizer)
+    print(response)
 

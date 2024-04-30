@@ -25,7 +25,7 @@ def inference(prompt, pipe, tokenizer):
         do_sample=True,
         top_k=1,
         temperature=0.9,
-        max_new_tokens=500,
+        max_new_tokens=2048,
         repetition_penalty=1.5,
         pad_token_id=tokenizer.eos_token_id,
     )

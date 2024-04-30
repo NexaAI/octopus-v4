@@ -2,7 +2,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, GenerationConfig
 
 model_id = "Open-Orca/Mistral-7B-OpenOrca"
 
-def model(accelerator, model_name_or_id = model_id):
+def model(accelerator=None, model_name_or_id = model_id):
     # Setting up the model with necessary parameters
     model = AutoModelForCausalLM.from_pretrained(model_name_or_id,
                                                               device_map={"": accelerator.process_index} if accelerator else "auto",
@@ -26,13 +26,13 @@ def inference(prompt, pipe, tokenizer):
     formatted_prompt = prompt_format(user_query=prompt)
     prompt_tokenized = tokenizer(formatted_prompt, return_tensors="pt").to("cuda")
     output_tokenized = pipe.generate(**prompt_tokenized, 
-                             max_length=512, 
+                             max_length=2048, 
                              num_return_sequences=1,
                              no_repeat_ngram_size=2,
                              temperature=0.7)
     # Decode generated tokens to string
     answer = tokenizer.decode(output_tokenized[0], skip_special_tokens=True)
-    return answer
+    return answer[len(formatted_prompt):]
 
 if __name__ == "__main__":
     prompt = "Tell me the result of derivative of x^3 when x is 2?"
