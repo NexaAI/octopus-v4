@@ -1,26 +1,33 @@
-# Overview
+# Training Framework for Specialized Models
 
-In this folder, we introduce the framework to train the specialized models. We currently focus on the "small" language models that are less than 10B parameters. 
+This guide provides an overview of how to train "small" language models with fewer than 10 billion parameters. Before starting, please take note of these key points:
 
-Some general tips for the training code:
-1. It will trigger the `wandb` logging system. We recommend to register a `wandb` account;
-2. All accelerate capability can be used here as well. Consider to set the accelerate config for your problem, and use `accelerate launch run.py` to start the training. For the setup of the accelerate, please refer to the [accelerate documentation](https://huggingface.co/docs/accelerate/index). You can use `accelerate` to adjust the mode of distributed training. Here is a [short description of different type of distributed learning](https://alexchen4ai.github.io/blog/notes/Large%20Language%20Model/llm_train.html);
-3. Please file any issus you encounter during the training process. We will try to help you as soon as possible.
+1. **Logging with Weights & Biases**: The training process utilizes the `wandb` logging system. It's recommended to [register a `wandb` account](https://wandb.ai/site) if you haven't done so already.
+2. **Utilizing Accelerate**: All acceleration capabilities can be leveraged here. It's advisable to configure the `accelerate` settings according to your specific requirements. Use the command `accelerate launch run.py` to initiate training. For setup instructions, refer to the [Accelerate documentation](https://huggingface.co/docs/accelerate/index). Additionally, here's a [brief on different types of distributed training](https://alexchen4ai.github.io/blog/notes/Large%20Language%20Model/llm_train.html) that you may find useful.
+3. **Issue Reporting**: Should you encounter any problems during training, please file an issue on this repository. We aim to provide assistance promptly.
 
+## Specific Training Instructions
 
-## SFT training
-When we run the model, use `accelerate launch --num_processes=$NUM_GPUS train_script.py` to start training.
+### SFT Training
+To train your model, execute the following command, ensuring you replace `$NUM_GPUS` with the actual number of GPUs available:
 
-Make sure to include the flag `--num_processes=$NUM_GPUS` to specify the number of GPUs to use. Otherwise, some environment may have issues with the GPU allocation. Since language models are not distinctly seperated into completion and chat model. We here differentiate them as well. The chat model can be trained after we introduce some special tokens to indicate the `<system>`, `<user>` and `<assistant>`. 
+```bash
+accelerate launch --num_processes=$NUM_GPUS train_script.py
+```
 
-To help use the training code more easily, we split the two different training scripts. 
+This will handle GPU allocation and prevent potential issues. Our framework distinguishes between completion and chat models by using specific training scripts and special tokens `<system>`, `<user>`, and `<assistant>`.
 
-### Completion model trainer
-Use the `sft_completion.py` script, and the command is `accelerate launch --num_processes=$NUM_GPUS sft_completion.py`. Consider to change the value of `PARAMS` to customize your training setup. 
+#### Completion Model Training
+For the completion model:
+```bash
+accelerate launch --num_processes=$NUM_GPUS sft_completion.py
+```
+Customize your training by modifying the `PARAMS` in the script as necessary.
 
-### Chat model trainer
-If you want to train a chat model, you may need a instructed model with tokens for the chat config. Also, the dataset used is different. We have prepared a script called `sft_chat.py`, and you also need to use the command `accelerate launch --num_processes=$NUM_GPUS sft_chat.py`. Consider to change the value of `PARAMS` to customize your training setup.
+#### Chat Model Training
+For the chat model, which requires a tokenizer with special tokens configured for chatting:
+```bash
+accelerate launch --num_processes=$NUM_GPUS sft_chat.py
+```
+Again, adjust `PARAMS` to tailor the training setup to your needs.
 
-Make sure you use the correct tokenizer that has the matching special token for chatting.
-
-### DPO
