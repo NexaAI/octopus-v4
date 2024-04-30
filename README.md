@@ -16,7 +16,7 @@ limitations under the License.
 
 <h1 align="center">Graph of Language Models</h1>
 
-**Let's build this graph together! We need your help. We have tried our best to find the best specialized models, but we can definitely do more with your participation!**
+**Let's build this graph together! We have tried our best to find the specialized models, but we can definitely do more with your participation!**
 
 <p align="center">
  <img src="https://storage.googleapis.com/octopus_graph/Octopus4.png" alt="Octopus Logo" width="200">
@@ -37,24 +37,27 @@ The project will mainly focus on the following aspects:
 The file structure of this GitHub repository is organized as follows:
 - `main.py`: This is the primary script for running the Octopus v4 model.
 - `build_graph`: Contains methods for constructing and managing the graph of language models. This includes operations such as creating, updating, and deleting nodes and edges.
-- `specialized_models`: Here, you'll find the **training code** along with a tutorial on how to prepare your data and train the specialized models. We provide support for two different frameworks: Hugging Face Transformers and PyTorch Lightning, to facilitate your training process. Feel free to raise any issues or questions you encounter during training.
+- `specialized_models`: Here, you'll find the **training code** along with a tutorial on how to prepare your data and train the specialized models. We provide code based on Hugging Face Transformers TRL library, to facilitate your training process. Feel free to raise any issues or questions you encounter during training.
 - `specialized_models_inference`: Here, you can find the **inference code** for the specialized models. This code is used to work with octopus-v4 model through the graph of language models, the entrance is the `specialized_infer.py` file.
 
 
 ## Environment Setup
 
 We recommend using a Linux environment and assume that you have an NVIDIA GPU when contributing to the project. To set up the project, follow these steps:
-
 ```bash
 conda create -n octopus4 python=3.10
 pip3 install torch torchvision torchaudio
 pip3 install transformers datasets accelerate peft
 ```
 
-Make sure to install PyTorch first, followed by the other packages. Alternatively, you can create a dev environment using our Docker image. For more information on setting up a dev environment, refer to this [YouTube video](https://www.youtube.com/watch?v=0H2miBK_gAk). And you can use our Dockerfile to build the image.
+Make sure to install PyTorch first, followed by the other packages. We recommend to install torchvision and torchaudio as well since we will introduce multimodal AI agent in the future. Alternatively, you can create a dev environment using our Docker image. For more information on setting up a dev environment, refer to this [YouTube video](https://www.youtube.com/watch?v=0H2miBK_gAk). And you can use our Dockerfile to build the image.
 ```bash
 docker build -t octopus4 .
 docker run --gpus all -p 8700:8700 octopus4
+```
+Otherwise, you can directly pull our docker image
+```
+docker pull nexaai/octopus4
 ```
 
 ## Using the Octopus v4 Model
@@ -115,5 +118,5 @@ For instructions on training specialized models, please refer to the `specialize
 ### Recommended Training Procedures
 To develop your specialized model effectively, we suggest the following steps:
 1. **Data Collection and Preparation**: Collect a dataset specific to your domain. Process this dataset to ensure it is clean and free from inappropriate content.
-2. **Model Training**: Train your model using the Sparse Fine-Tuning (SFT) method.
+2. **Model Training**: Train your model using the Supervised Fine-Tuning (SFT) method.
 3. **DPO Training**: Prepare a dataset for Direct Preference Optimization (DPO), and use the DPO to train your model.
