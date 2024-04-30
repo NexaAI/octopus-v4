@@ -110,7 +110,7 @@ Here are the comparative MMLU scores for various models tested under a 5-shot le
 
 
 ## Train the Specialized Models
-For instructions on training specialized models, please refer to the `specialized_models` directory. We currently support training using [Hugging Face Transformers](https://huggingface.co/docs/trl/index), chosen for its convenience and robustness in training specialized models. Future updates will expand support to include LoRA training, training larger models (such as 13B and 70B), distributed training, and more. Stay tuned for these enhancements.
+For instructions on training specialized models, please refer to the `specialized_models` directory. We currently support training using [Hugging Face TRL](https://huggingface.co/docs/trl/index), chosen for its convenience and robustness in training specialized models. Future updates will expand support to include LoRA training, training larger models (such as 13B and 70B), distributed training, and more. Stay tuned for these enhancements.
 
 ### Recommended Training Procedures
 To develop your specialized model effectively, we suggest the following steps:
