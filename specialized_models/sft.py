@@ -43,6 +43,7 @@ training_config = {
     "warmup_ratio": 0.2,
 }
 
+# Consider to use lora to save the memory
 peft_config = {
     "bias": "none",
     "lora_alpha": 32,
@@ -55,7 +56,6 @@ peft_config = {
 
 train_conf = TrainingArguments(**training_config)
 peft_conf = LoraConfig(**peft_config)
-
 
 # set the logging
 logging.basicConfig(
