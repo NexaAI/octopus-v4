@@ -114,3 +114,6 @@ To develop your specialized model effectively, we suggest the following steps:
 1. **Data Collection and Preparation**: Collect a dataset specific to your domain. Process this dataset to ensure it is clean and free from inappropriate content.
 2. **Model Training**: Train your model using the Sparse Fine-Tuning (SFT) method.
 3. **DPO Training**: Prepare a dataset for Differential Privacy Optimization (DPO) and integrate DPO into your training regimen.
+
+
+## 
