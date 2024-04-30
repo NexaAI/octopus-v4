@@ -19,7 +19,7 @@ limitations under the License.
 **Let's build this graph together! We need your help. We have tried our best to find the best specialized models, but we can definitely do more with your participation!**
 
 <p align="center">
- <img src="https://example.com/octopus-logo.png" alt="Octopus Logo" width="200">
+ <img src="https://storage.googleapis.com/octopus_graph/Octopus4.webp" alt="Octopus Logo" width="200">
 </p>
 
 This project aims to build the world's largest graph of language models. To our knowledge, it is the first attempt to construct such a graph. In this graph, we will integrate many different specialized models and train the respective Octopus models for the edges between the nodes to help distribute and deliver information effectively.
@@ -58,7 +58,7 @@ Query: Tell me the result of derivative of x^3 when x is 2?
 <nexa_end>
 ```
 
-In this use case, `<nexa_4>` is the special token representing the math GPT. The natural math question is converted into a professional math expression to facilitate better understanding by the worker model. To try our model, you can use `python main.py` to run the code. 
+In this use case, `<nexa_4>` is the special token representing the math GPT. The natural math question is converted into a professional math expression to facilitate better understanding by the worker model. To try our model, you can use `python main.py` to run the code to try the Octopus v4 model. 
 
 The respective models used in our experiments are as follows:
 
