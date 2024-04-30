@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<h1 align="center">[Graph of Language Models](https://graph.nexa4ai.com/)</h1>
+<h1 align="center">Graph of Language Models</h1>
 
 **Let's build this graph together! We need your help. We have tried our best to find the best specialized models, but we can definitely do more with your participation!**
 
@@ -22,7 +22,7 @@ limitations under the License.
  <img src="https://storage.googleapis.com/octopus_graph/Octopus4.png" alt="Octopus Logo" width="200">
 </p>
 
-This project aims to build the world's largest graph of language models. To our knowledge, it is the first attempt to construct such a graph. In this graph, we will integrate many different specialized models and train the respective Octopus models for the edges between the nodes to help distribute and deliver information effectively.
+This project aims to build the world's largest graph of language models. To our knowledge, it is the first attempt to construct such a graph. Have a look at [our design demo](https://graph.nexa4ai.com/). In this graph, we will integrate many different specialized models and train the respective Octopus models for the edges between the nodes to help distribute and deliver information effectively. *We wish to unit all open source language models to deliver the performance that can compete with closed source models*.
 
 The project is still in its early stages, and we have only included the very initial Octopus model. However, at Nexa AI, we are committed to dedicating significant time and resources to create a powerful graph of AI models.
 
@@ -109,4 +109,11 @@ Here are the comparative MMLU scores for various models tested under a 5-shot le
 
 
 
-## Train the specialized models
+## Train the Specialized Models
+For instructions on training specialized models, please refer to the `specialized_models` directory. We currently support training using [Hugging Face Transformers](https://huggingface.co/docs/trl/index), chosen for its convenience and robustness in training specialized models. Future updates will expand support to include LoRA training, training larger models (such as 13B and 70B), distributed training, and more. Stay tuned for these enhancements.
+
+### Recommended Training Procedures
+To develop your specialized model effectively, we suggest the following steps:
+1. **Data Collection and Preparation**: Collect a dataset specific to your domain. Process this dataset to ensure it is clean and free from inappropriate content.
+2. **Model Training**: Train your model using the Sparse Fine-Tuning (SFT) method.
+3. **DPO Training**: Prepare a dataset for Direct Preference Optimization (DPO), and use the DPO to train your model.
