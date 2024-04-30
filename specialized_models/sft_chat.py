@@ -19,12 +19,12 @@ import os
 logger = logging.getLogger(__name__)
 
 # set your key parameters to support the training
-# for base model, make sure a compatible tokenizer is placed inside the directory 
+# for base model, make sure a compatible tokenizer is placed inside the directory
 # as well. Just use tokenizer.push_to_hub("same path as model")
 PARAMS = {
     "base_model": "microsoft/Phi-3-mini-128k-instruct",  # You can switch to another model
     "dataset_name": "HuggingFaceH4/ultrachat_200k",
-    "WANDB_DISABLED": "true", # set as false if you want to use wandb
+    "WANDB_DISABLED": "true",  # set as false if you want to use wandb
 }
 
 os.environ["WANDB_DISABLED"] = PARAMS["WANDB_DISABLED"]
@@ -117,7 +117,8 @@ def process_dataset(
     if messages[0]["role"] != "system":
         messages.insert(0, {"role": "system", "content": ""})
     example["text"] = tokenizer.apply_chat_template(
-        messages, tokenize=False, add_generation_prompt=False)
+        messages, tokenize=False, add_generation_prompt=False
+    )
     return example
 
 
@@ -158,7 +159,7 @@ trainer = SFTTrainer(
     train_dataset=processed_train_dataset,
     eval_dataset=processed_test_dataset,
     max_seq_length=2048,
-    dataset_text_field="text", # select text as the data field
+    dataset_text_field="text",  # select text as the data field
     tokenizer=tokenizer,
     packing=True,
 )

@@ -19,12 +19,12 @@ import os
 logger = logging.getLogger(__name__)
 
 # set your key parameters to support the training
-# for base model, make sure a compatible tokenizer is placed inside the directory 
+# for base model, make sure a compatible tokenizer is placed inside the directory
 # as well. Just use tokenizer.push_to_hub("same path as model")
 PARAMS = {
     "base_model": "google/gemma-2b",  # You can switch to another model
     "dataset_name": "microsoft/orca-math-word-problems-200k",
-    "WANDB_DISABLED": "true", # set as false if you want to use wandb
+    "WANDB_DISABLED": "true",  # set as false if you want to use wandb
 }
 
 os.environ["WANDB_DISABLED"] = PARAMS["WANDB_DISABLED"]
@@ -149,7 +149,7 @@ trainer = SFTTrainer(
     train_dataset=processed_train_dataset,
     eval_dataset=processed_test_dataset,
     max_seq_length=2048,
-    dataset_text_field="text", # select text as the data field
+    dataset_text_field="text",  # select text as the data field
     tokenizer=tokenizer,
     packing=True,
 )

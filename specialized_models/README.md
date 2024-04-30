@@ -35,3 +35,5 @@ Again, adjust `PARAMS` to tailor the training setup to your needs.
 ## DPO training
 If you really want a high-quality model, DPO training is highly recommended. We provide a DPO training code `dpo.py`. To conduct DPO training, you will also need a special dataset with two columns, `chosen` and `rejected`.
 
+One note is that when you conduct the DPO training, use the finetuned model from the SFT part as the base model. For more detail about PPO or reinforcement learning for language models, refer to this [blog](https://alexchen4ai.github.io/blog/notes/Large%20Language%20Model/rl_llm.html).
+
