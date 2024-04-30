@@ -32,12 +32,13 @@ accelerate launch --num_processes=$NUM_GPUS sft_chat.py
 Again, adjust `PARAMS` to tailor the training setup to your needs.
 
 
-## DPO training
-If you really want a high-quality model, DPO training is highly recommended. We provide a DPO training code `dpo.py`. To conduct DPO training, you will also need a special dataset with two columns, `chosen` and `rejected`.
+## DPO Training
 
-One note is that when you conduct the DPO training, use the finetuned model from the SFT part as the base model. For more detail about PPO or reinforcement learning for language models, refer to this [blog](https://alexchen4ai.github.io/blog/notes/Large%20Language%20Model/rl_llm.html).
+For those aiming for a high-quality model, utilizing DPO training is essential. We provide the `dpo.py` script for this purpose. Ensure you have a specialized dataset featuring three columns: `prompt`, `chosen` and `rejected`, required for the DPO training.
 
-When you run the code, use
+It's important to use the finetuned model from the SFT stage as the initial model for DPO training. For additional insights into PPO or reinforcement learning as applied to language models, refer to this [blog](https://alexchen4ai.github.io/blog/notes/Large%20Language%20Model/rl_llm.html).
+
+Execute the script with the following command:
 ```bash
 accelerate launch --num_processes=$NUM_GPUS dpo.py
 ```
