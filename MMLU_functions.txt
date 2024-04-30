@@ -1,0 +1,202 @@
+def physics_gpt(query):
+    """
+    A specialized language model designed to answer questions and provide insights on physics-related topics, including conceptual physics, college physics, high school physics, and astronomy. This model caters to learners at different educational stages, from high school to college levels. This model also reformat user queries into professional physics language.
+
+    Parameters:
+    - query (str): A detailed prompt that encapsulates a physics-related question or problem. It is designed to support a deep and professional discussion of physics topics.
+
+    Returns:
+    - str: Detailed explanations, solutions, or information related to the physics query.
+    """
+
+
+def chemistry_gpt(query):
+    """
+    A specialized language model tailored to assist with chemistry topics, including high school chemistry, college chemistry, and related chemical sciences. This tool aids students and researchers in deepening their understanding of chemical concepts and practices. This model also reformats user queries into professional chemistry language.
+
+    Parameters:
+    - query (str): A detailed prompt that encapsulates a chemistry-related question or problem. The language used is intended for a sophisticated exploration of chemistry.
+
+    Returns:
+    - str: Detailed explanations, solutions, or information related to the chemistry query.
+    """
+
+
+def biology_gpt(query):
+    """
+    This language model is dedicated to providing insights and answers on biology, encompassing high school biology, college biology, human anatomy, and related fields. It is an essential resource for students across educational levels and biology enthusiasts. This model also reformats user queries into professional biology language.
+
+    Parameters:
+    - query (str): A detailed prompt that encapsulates a biology-related question or problem, suitable for detailed and expert-level discussion.
+
+    Returns:
+    - str: Detailed explanations, solutions, or information related to the biology query.
+    """
+
+
+def computer_science_gpt(query):
+    """
+    Designed for computer science queries, this language model covers topics such as college computer science, high school computer science, computer security, and machine learning. It supports both academic and professional needs, enhancing learning and research in the field of computer science. This model also reformats user queries into professional computer science language.
+
+    Parameters:
+    - query (str): A detailed prompt related to computer science topics, suitable for academic and professional discussions.
+
+    Returns:
+    - str: Detailed responses that enhance understanding and provide solutions in computer science.
+    """
+
+
+def math_gpt(query):
+    """
+    A specialized language model designed to answer questions and provide insights on math-related topics, including abstract algebra, elementary mathematics, high school mathematics, college mathematics, and high school statistics. This model supports learners at various educational levels from high school to college. This model also reformats user queries into professional math language.
+
+    Parameters:
+    - query (str): A detailed prompt that encapsulates a math-related question or problem. Speak in a professional mathematician manner.
+
+    Returns:
+    - str: Detailed explanations, solutions, or information related to the math query.
+    """
+
+
+def electrical_engineering_gpt(query):
+    """
+    This language model offers expert guidance on electrical engineering topics, designed to support students, educators, and professionals in the field. It addresses questions related to fundamental and advanced electrical engineering concepts. This model also reformats user queries into professional electrical engineering language.
+
+    Parameters:
+    - query (str): A detailed prompt that encapsulates an electrical engineering-related question or problem, fostering professional-level discussions.
+
+    Returns:
+    - str: Comprehensive responses, solutions, or information related to the electrical engineering query.
+    """
+
+
+def history_gpt(query):
+    """
+    A specialized language model designed to answer questions and provide insights on history-related topics. This model covers a broad range of historical subjects including high school European history, high school US history, high school world history, and prehistory. It aims to support learners and enthusiasts from various educational backgrounds. This model also reformats user queries into professional history language.
+
+    Parameters:
+    - query (str): A detailed prompt that encapsulates a history-related question or problem. Speak in a manner suited for historians or history students.
+
+    Returns:
+    - str: Detailed explanations, historical analyses, or information related to the history query.
+    """
+
+
+def philosophy_gpt(query):
+    """
+    A specialized language model designed to provide expert responses on various philosophy-related topics, including formal logic, logical fallacies, moral disputes, moral scenarios, and world religions. This model is useful for students, educators, and philosophy enthusiasts seeking deep philosophical discussions and insights. This model also reformats user queries into professional philosophy language.
+
+    Parameters:
+    - query (str): A detailed prompt that encapsulates a philosophy-related question or problem. Speak in a professional philosopher manner.
+
+    Returns:
+    - str: In-depth philosophical analysis or discussions relevant to the query.
+    """
+
+
+def law_gpt(query):
+    """
+    A specialized language model equipped to handle queries related to legal studies, including international law, jurisprudence, and professional law. This model serves law students, practicing lawyers, and professionals in the legal field needing detailed legal explanations or interpretations. This model also reformats user queries into professional legal language.
+
+    Parameters:
+    - query (str): A detailed prompt that encapsulates a law-related question or issue. Speak in a professional legal manner.
+
+    Returns:
+    - str: Comprehensive legal analyses, solutions, or information related to the law query.
+    """
+
+
+def politics_gpt(query):
+    """
+    A specialized language model designed to delve into topics related to politics and public relations, including high school government and politics, security studies, and US foreign policy. This model aids political science students, professionals, and enthusiasts in gaining a better understanding of political dynamics and theories. This model also reformats user queries into professional politics language.
+
+    Parameters:
+    - query (str): A detailed prompt that encapsulates a politics-related question or discussion. Speak in a manner suitable for political analysts.
+
+    Returns:
+    - str: Detailed political analysis, insights, or information pertaining to the politics query.
+    """
+
+
+def culture_gpt(query):
+    """
+    A specialized language model designed to explore cultural and societal topics, particularly focusing on human sexuality and sociology. This model is ideal for cultural studies students, sociologists, and anyone interested in understanding the dynamics of human societies and cultures. This model also reformats user queries into professional sociocultural analyst language.
+
+    Parameters:
+    - query (str): A detailed prompt that encapsulates a culture-related question or topic. Speak in a professional sociocultural analyst manner.
+
+    Returns:
+    - str: Detailed cultural insights, analyses, or information related to the cultural query.
+    """
+
+
+def economics_gpt(query):
+    """
+    A specialized language model designed to tackle questions and provide insights into economics, including econometrics, high school macroeconomics, and high school microeconomics. This model assists students, economists, and financial analysts in understanding economic theories and applications. This model also reformats user queries into professional economics language.
+
+    Parameters:
+    - query (str): A detailed prompt that encapsulates an economics-related question or problem. Speak in a manner suitable for economists.
+
+    Returns:
+    - str: Detailed economic explanations, analyses, or solutions relevant to the economics query.
+    """
+
+
+def geography_gpt(query):
+    """
+    A specialized language model developed to address inquiries related to geography, specifically focusing on high school geography. This model supports students and educators in understanding geographical concepts, theories, and real-world applications. This model also reformats user queries into professional geography language.
+
+    Parameters:
+    - query (str): A detailed prompt that encapsulates a geography-related question or topic. Speak in an educational manner suitable for geographers.
+
+    Returns:
+    - str: Detailed geographical information, analyses, or insights related to the geography query.
+    """
+
+
+def psychology_gpt(query):
+    """
+    A specialized language model focused on providing expert responses on topics related to psychology, including high school psychology, professional psychology, and human aging. This model is particularly valuable for psychology students, clinicians, and researchers seeking to understand various psychological theories and practices. This model also reformats user queries into professional psychologist language.
+
+    Parameters:
+    - query (str): A detailed prompt that encapsulates a psychology-related question or discussion. Speak in a professional psychologist manner.
+
+    Returns:
+    - str: In-depth psychological analyses, solutions, or information relevant to the psychology query.
+    """
+
+
+def business_gpt(query):
+    """
+    A specialized language model designed to address topics related to business, including business ethics, management, and marketing. This model supports business students, professionals, and entrepreneurs in understanding business practices, theories, and market dynamics. This model also reformats user queries into professional business language.
+
+    Parameters:
+    - query (str): A detailed prompt that encapsulates a business-related question or problem. Speak in a professional business manner.
+
+    Returns:
+    - str: Detailed business insights, strategies, or information relevant to the business query.
+    """
+
+
+def health_gpt(query):
+    """
+    A specialized language model designed to provide answers and insights on health-related topics, including anatomy, clinical knowledge, college medicine, medical genetics, nutrition, and virology. This model assists medical students, health professionals, and researchers in understanding complex medical and health issues. This model also reformats user queries into professional medical language.
+
+    Parameters:
+    - query (str): A detailed prompt that encapsulates a health-related question or issue. Speak in a professional medical manner.
+
+    Returns:
+    - str: Detailed medical explanations, solutions, or information related to the health query.
+    """
+
+
+def general_gpt(query):
+    """
+    A general-purpose language model designed to provide answers and insights across a wide array of topics not specifically categorized under other specialized models. This tool is specifically useful for users seeking information on miscellaneous and diverse topics that do not fall into the standard academic or professional categories such as physics, chemistry, biology, computer science, math, electrical engineering, history, philosophy, law, politics, culture, economics, geography, psychology, business, or health.
+
+    Parameters:
+    - query (str): A general prompt encompassing any topic of interest outside the specified categories. Speak in a broad and inclusive manner.
+
+    Returns:
+    - str: Comprehensive explanations or information pertaining to the general query, ensuring a focus away from the excluded fields.
+    """
