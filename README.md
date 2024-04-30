@@ -44,14 +44,13 @@ The file structure of this GitHub repository is organized as follows:
 ## Environment Setup
 
 We recommend using a Linux environment and assume that you have an NVIDIA GPU when contributing to the project. To set up the project, follow these steps:
-
 ```bash
 conda create -n octopus4 python=3.10
 pip3 install torch torchvision torchaudio
 pip3 install transformers datasets accelerate peft
 ```
 
-Make sure to install PyTorch first, followed by the other packages. Alternatively, you can create a dev environment using our Docker image. For more information on setting up a dev environment, refer to this [YouTube video](https://www.youtube.com/watch?v=0H2miBK_gAk). And you can use our Dockerfile to build the image.
+Make sure to install PyTorch first, followed by the other packages. We recommend to install torchvision and torchaudio as well since we will introduce multimodal AI agent in the future. Alternatively, you can create a dev environment using our Docker image. For more information on setting up a dev environment, refer to this [YouTube video](https://www.youtube.com/watch?v=0H2miBK_gAk). And you can use our Dockerfile to build the image.
 ```bash
 docker build -t octopus4 .
 docker run --gpus all -p 8700:8700 octopus4
