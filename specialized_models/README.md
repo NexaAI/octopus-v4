@@ -15,5 +15,10 @@ Make sure to include the flag `--num_processes=$NUM_GPUS` to specify the number 
 
 To help use the training code more easily, we split the two different training scripts. 
 
-### Completion trainer
-Use the `sft_completion.py` script, and the command is `accelerate launch --num_processes=$NUM_GPUS sft_completion.py`. Consider to change the value of `PARAMS` to customize your training setup.
+### Completion model trainer
+Use the `sft_completion.py` script, and the command is `accelerate launch --num_processes=$NUM_GPUS sft_completion.py`. Consider to change the value of `PARAMS` to customize your training setup. 
+
+### Chat model trainer
+If you want to train a chat model, you may need a instructed model with tokens for the chat config. Also, the dataset used is different. We have prepared a script called `sft_chat.py`, and you also need to use the command `accelerate launch --num_processes=$NUM_GPUS sft_chat.py`. Consider to change the value of `PARAMS` to customize your training setup.
+
+### DPO
