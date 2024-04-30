@@ -13,5 +13,7 @@ When we run the model, use `accelerate launch --num_processes=$NUM_GPUS train_sc
 
 Make sure to include the flag `--num_processes=$NUM_GPUS` to specify the number of GPUs to use. Otherwise, some environment may have issues with the GPU allocation. Since language models are not distinctly seperated into completion and chat model. We here differentiate them as well. The chat model can be trained after we introduce some special tokens to indicate the `<system>`, `<user>` and `<assistant>`. 
 
+To help use the training code more easily, we split the two different training scripts. 
 
 ### Completion trainer
+Use the `sft_completion.py` script, and the command is `accelerate launch --num_processes=$NUM_GPUS sft_completion.py`. Consider to change the value of `PARAMS` to customize your training setup.
