@@ -22,7 +22,7 @@ limitations under the License.
  <img src="https://storage.googleapis.com/octopus_graph/Octopus4.png" alt="Octopus Logo" width="200">
 </p>
 
-This project aims to build the world's largest graph of language models. To our knowledge, it is the first attempt to construct such a graph. Have a look at [our design demo](https://graph.nexa4ai.com/). In this graph, we will integrate many different specialized models and train the respective Octopus models for the edges between the nodes to help distribute and deliver information effectively.
+This project aims to build the world's largest graph of language models. To our knowledge, it is the first attempt to construct such a graph. Have a look at [our design demo](https://graph.nexa4ai.com/). In this graph, we will integrate many different specialized models and train the respective Octopus models for the edges between the nodes to help distribute and deliver information effectively. *We wish to unit all open source language models to deliver the performance that can compete with closed source models*.
 
 The project is still in its early stages, and we have only included the very initial Octopus model. However, at Nexa AI, we are committed to dedicating significant time and resources to create a powerful graph of AI models.
 
