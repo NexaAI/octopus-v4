@@ -108,28 +108,30 @@ tokenizer.padding_side = "right"
 # TRL is a highly wrapped library, 
 # we should use text field to store the training data
 # and other fields would be removed.
-def apply_chat_template(
+def process_dataset(
     example,
-    tokenizer,
 ):
-    messages = example["messages"]
-    # Add an empty system message if there is none
-    if messages[0]["role"] != "system":
-        messages.insert(0, {"role": "system", "content": ""})
-    example["text"] = tokenizer.apply_chat_template(
-        messages, tokenize=False, add_generation_prompt=False
-    )
+    # messages = example["messages"]
+    # # Add an empty system message if there is none
+    # if messages[0]["role"] != "system":
+    #     messages.insert(0, {"role": "system", "content": ""})
+    # example["text"] = tokenizer.apply_chat_template(
+    #     messages, tokenize=False, add_generation_prompt=False
+    # )
+    question = example["question"]
+    answer = example["answer"]
+    example["text"] = f"Question:{question},  Answer:{answer}"
     return example
 
 
-raw_dataset = load_dataset("HuggingFaceH4/ultrachat_200k")
+raw_dataset = load_dataset("microsoft/orca-math-word-problems-200k")
 train_dataset = raw_dataset["train_sft"]
 test_dataset = raw_dataset["test_sft"]
 column_names = list(train_dataset.features)
 
 
 processed_train_dataset = train_dataset.map(
-    apply_chat_template,
+    process_dataset,
     fn_kwargs={"tokenizer": tokenizer},
     num_proc=10,
     remove_columns=column_names,
@@ -137,7 +139,7 @@ processed_train_dataset = train_dataset.map(
 )
 
 processed_test_dataset = test_dataset.map(
-    apply_chat_template,
+    process_dataset,
     fn_kwargs={"tokenizer": tokenizer},
     num_proc=10,
     remove_columns=column_names,
