@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<h1 align="center">[Graph of Language Models](https://graph.nexa4ai.com/)</h1>
+<h1 align="center">Graph of Language Models</h1>
 
 **Let's build this graph together! We need your help. We have tried our best to find the best specialized models, but we can definitely do more with your participation!**
 
@@ -22,7 +22,7 @@ limitations under the License.
  <img src="https://storage.googleapis.com/octopus_graph/Octopus4.png" alt="Octopus Logo" width="200">
 </p>
 
-This project aims to build the world's largest graph of language models. To our knowledge, it is the first attempt to construct such a graph. In this graph, we will integrate many different specialized models and train the respective Octopus models for the edges between the nodes to help distribute and deliver information effectively.
+This project aims to build the world's largest graph of language models. To our knowledge, it is the first attempt to construct such a graph. Have a look at [our design demo]((https://graph.nexa4ai.com/)). In this graph, we will integrate many different specialized models and train the respective Octopus models for the edges between the nodes to help distribute and deliver information effectively.
 
 The project is still in its early stages, and we have only included the very initial Octopus model. However, at Nexa AI, we are committed to dedicating significant time and resources to create a powerful graph of AI models.
 
@@ -51,7 +51,7 @@ pip3 install torch torchvision torchaudio
 pip3 install transformers datasets accelerate peft
 ```
 
-Make sure to install PyTorch first, followed by the other packages. Alternatively, you can create a dev environment using our Docker image. For more information on setting up a dev environment, refer to this [YouTube video](https://www.youtube.com/watch?v=0H2miBK_gAk).
+Make sure to install PyTorch first, followed by the other packages. Consider to install `torchvision` and `torchaudio` since we will introduce multimodal model in the graph. According to our experience, if you don't install them in one line, there could be some package conflict. Alternatively, you can create a dev environment using our Docker image. For more information on setting up a dev environment, refer to this [YouTube video](https://www.youtube.com/watch?v=0H2miBK_gAk).
 
 
 ## Using the Octopus v4 Model
