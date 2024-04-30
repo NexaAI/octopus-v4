@@ -6,3 +6,4 @@ datasets
 accelerate
 peft
 trl
+peft
