@@ -21,4 +21,6 @@ Use the `sft_completion.py` script, and the command is `accelerate launch --num_
 ### Chat model trainer
 If you want to train a chat model, you may need a instructed model with tokens for the chat config. Also, the dataset used is different. We have prepared a script called `sft_chat.py`, and you also need to use the command `accelerate launch --num_processes=$NUM_GPUS sft_chat.py`. Consider to change the value of `PARAMS` to customize your training setup.
 
+Make sure you use the correct tokenizer that has the matching special token for chatting.
+
 ### DPO

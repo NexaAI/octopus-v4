@@ -128,8 +128,8 @@ def process_dataset(
 # --------------------------------------------------------------------- #
 raw_dataset = load_dataset(PARAMS["dataset_name"])
 
-train_dataset = raw_dataset["train_sft"]
-test_dataset = raw_dataset["test_sft"]
+train_dataset = raw_dataset["train_sft"].select(range(10000))
+test_dataset = raw_dataset["test_sft"].select(range(128))
 column_names = list(train_dataset.features)
 
 processed_train_dataset = train_dataset.map(
