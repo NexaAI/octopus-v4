@@ -1,9 +1,8 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model_id = "Open-Orca/Mistral-7B-OpenOrca"
+model_id = "abacusai/Llama-3-Smaug-8B"
 
-
-def model(accelerator=None, model_name_or_id=model_id):
+def model(accelerator, model_name_or_id=model_id):
     # Setting up the model with necessary parameters
     model = AutoModelForCausalLM.from_pretrained(
         model_name_or_id,
@@ -16,12 +15,9 @@ def model(accelerator=None, model_name_or_id=model_id):
 
 
 def prompt_format(user_query):
-    llama_prompt_template = """<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-
-{{You are expert to solve math problems.}}<|eot_id|><|start_header_id|>user<|end_header_id|>
-
-{user_query}<|eot_id|><|start_header_id|>assistant<|end_header_id|>"""
-    return llama_prompt_template.format(user_query=user_query)
+    system_prompt = "You are an expert in business, equipped with comprehensive knowledge across various subfields such as marketing, finance, and strategy. Your responses are insightful, detailed, and reflect the latest industry trends. You provide unbiased and factual information, and you're dedicated to educating and assisting with all business-related inquiries. Your expertise also extends to discussing the ethical, legal, and social implications of business practices."
+    llama_prompt_template = """[INST] <</SYS>>\n{system_prompt}\n<</SYS>>\n\n{user_query} [/INST]"""
+    return llama_prompt_template.format(system_prompt=system_prompt, user_query=user_query)
 
 
 def inference(prompt, pipe, tokenizer):
@@ -30,7 +26,6 @@ def inference(prompt, pipe, tokenizer):
     output_tokenized = pipe.generate(
         **prompt_tokenized,
         max_length=2048,
-        num_return_sequences=1,
         temperature=1
     )
     # Decode generated tokens to string
@@ -39,7 +34,7 @@ def inference(prompt, pipe, tokenizer):
 
 
 if __name__ == "__main__":
-    prompt = "Tell me the result of derivative of x^3 when x is 2?"
-    pipe, tokenizer = model(None, )
+    prompt = "How can we solve dynamic programming in computer science?"
+    pipe, tokenizer = model(None, model_id)
     response = inference(prompt, pipe, tokenizer)
     print(response)

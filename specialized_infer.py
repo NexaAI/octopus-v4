@@ -1,5 +1,5 @@
 from utils import functional_token_mapping, extract_content
-from specialized_models_inference import inference_chemistry, inference_math
+from specialized_models_inference import inference_biology, inference_buisiness, inference_chemistry, inference_computer_science, inference_math, inference_physics
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import time
@@ -7,12 +7,20 @@ torch.random.manual_seed(0)
 
 model_import_mapping = {
     "chemistry_gpt": lambda: inference_chemistry.model(),
-    "math_gpt": lambda: inference_math.model()
+    "math_gpt": lambda: inference_math.model(),
+    "computer_science_gpt": lambda: inference_computer_science.model(),
+    "biology_gpt": lambda: inference_biology.model(),
+    "business_gpt": lambda: inference_buisiness.model(),
+    "physics_gpt": lambda: inference_physics.model()
 }
 
 model_inference_mapping = {
     "chemistry_gpt": lambda prompt, pipe, tokenizer: inference_chemistry.inference(prompt, pipe, tokenizer),
-    "math_gpt": lambda prompt, pipe, tokenizer: inference_math.inference(prompt, pipe, tokenizer)
+    "math_gpt": lambda prompt, pipe, tokenizer: inference_math.inference(prompt, pipe, tokenizer),
+    "computer_science_gpt": lambda prompt, pipe, tokenizer: inference_computer_science.inference(prompt, pipe, tokenizer),
+    "biology_gpt": lambda prompt, pipe, tokenizer: inference_biology.inference(prompt, pipe, tokenizer),
+    "business_gpt": lambda prompt, pipe, tokenizer: inference_buisiness.inference(prompt, pipe, tokenizer),
+    "physics_gpt": lambda prompt, pipe, tokenizer: inference_physics.inference(prompt, pipe, tokenizer)
 }
 
 MAX_TOKEN_LENGTH = 200
