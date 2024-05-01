@@ -23,7 +23,7 @@ limitations under the License.
 </p>
 
 🔗 [Octopus-v4 on Hugging Face](https://huggingface.co/NexaAIDev/Octopus-v4)  
-
+🏆[Open LLM Leaderboard for domains](https://huggingface.co/spaces/NexaAIDev/domain_llm_leaderboard)  
 
 This project aims to build the world's largest graph of language models. To our knowledge, it is the first attempt to construct such a graph. Have a look at [our design demo](https://graph.nexa4ai.com/). In this graph, we will integrate many different specialized models and train the respective Octopus models for the edges between the nodes to help distribute and deliver information effectively. *We wish to unit all open source language models to deliver the performance that can compete with closed source models*.
 
@@ -113,7 +113,8 @@ Here are the comparative MMLU scores for various models tested under a 5-shot le
 | Gemma-2b                          | 42.3%          |
 | Gemma-7b                          | 64.3%          |
 
-
+### Domain LLM Leaderboard
+Explore our collection of domain-specific large language models (LLMs) or contribute by suggesting new models tailored to specific domains. For detailed information on available models and to engage with our community, please visit our [Domain LLM Leaderboard](https://huggingface.co/spaces/NexaAIDev/domain_llm_leaderboard).
 
 ## Train the Specialized Models
 For instructions on training specialized models, please refer to the `specialized_models` directory. We currently support training using [Hugging Face TRL](https://huggingface.co/docs/trl/index), chosen for its convenience and robustness in training specialized models. Future updates will expand support to include LoRA training, training larger models (such as 13B and 70B), distributed training, and more. Stay tuned for these enhancements.
