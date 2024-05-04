@@ -40,6 +40,6 @@ def inference(prompt, pipe, tokenizer):
 
 if __name__ == "__main__":
     prompt = "What is Molecule of Ibuprofen?"
-    pipe, tokenizer = model(None)
+    pipe, tokenizer = model(None, model_id)
     response = inference(prompt, pipe, tokenizer)
     print(response)
