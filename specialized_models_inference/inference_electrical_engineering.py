@@ -1,8 +1,8 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-model_id = "Open-Orca/Mistral-7B-OpenOrca"
+model_id = "meta-llama/Meta-Llama-3-8B-Instruct"
 
-def model(accelerator=None, model_name_or_id=model_id):
+def model(accelerator, model_name_or_id=model_id):
     # Setting up the model with necessary parameters
     model = AutoModelForCausalLM.from_pretrained(
         model_name_or_id,
@@ -15,12 +15,9 @@ def model(accelerator=None, model_name_or_id=model_id):
 
 
 def prompt_format(user_query):
-    llama_prompt_template = """<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-
-{{You are expert to solve math problems.}}<|eot_id|><|start_header_id|>user<|end_header_id|>
-
-{user_query}<|eot_id|><|start_header_id|>assistant<|end_header_id|>"""
-    return llama_prompt_template.format(user_query=user_query)
+    system_prompt = "You are an expert in electrical engineering, deeply knowledgeable about circuits, electromagnetism, control systems, and telecommunications. Your responses provide detailed explanations, practical insights, and state-of-the-art solutions to technical challenges. You help demystify complex concepts in electrical engineering and guide through both theoretical and applied aspects of the field."
+    llama_prompt_template = """[INST] <</SYS>>\n{system_prompt}\n<</SYS>>\n\n{user_query} [/INST]"""
+    return llama_prompt_template.format(system_prompt=system_prompt, user_query=user_query)
 
 
 def inference(prompt, pipe, tokenizer):
@@ -29,7 +26,6 @@ def inference(prompt, pipe, tokenizer):
     output_tokenized = pipe.generate(
         **prompt_tokenized,
         max_length=2048,
-        num_return_sequences=1,
         temperature=1
     )
     # Decode generated tokens to string
@@ -38,7 +34,7 @@ def inference(prompt, pipe, tokenizer):
 
 
 if __name__ == "__main__":
-    prompt = "Tell me the result of derivative of x^3 when x is 2?"
-    pipe, tokenizer = model(None, )
+    prompt = "Explain the principles of signal processing in digital communications."
+    pipe, tokenizer = model(None, model_id)
     response = inference(prompt, pipe, tokenizer)
     print(response)
