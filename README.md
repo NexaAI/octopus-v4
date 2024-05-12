@@ -117,6 +117,9 @@ Here are the comparative MMLU scores for various models tested under a 5-shot le
 Explore our collection of domain-specific large language models (LLMs) or contribute by suggesting new models tailored to specific domains. For detailed information on available models and to engage with our community, please visit our [Domain LLM Leaderboard](https://huggingface.co/spaces/NexaAIDev/domain_llm_leaderboard).
 
 ## Train the Specialized Models
+**We encourage you to train and add the specialized model list.**
+
+
 For instructions on training specialized models, please refer to the `specialized_models` directory. We currently support training using [Hugging Face TRL](https://huggingface.co/docs/trl/index), chosen for its convenience and robustness in training specialized models. Future updates will expand support to include LoRA training, training larger models (such as 13B and 70B), distributed training, and more. Stay tuned for these enhancements.
 
 ### Recommended Training Procedures
