@@ -105,7 +105,7 @@ model = AutoModelForCausalLM.from_pretrained(
     torch_dtype=torch.bfloat16,
     trust_remote_code=True,
 )
-tokenizer = AutoTokenizer.from_pretrained("NexaAIDev/octopus-v4-finetuned-v1")
+tokenizer = AutoTokenizer.from_pretrained("NexaAIDev/Octopus-v4")
 
 question = "Tell me the result of derivative of x^3 when x is 2?"
 
